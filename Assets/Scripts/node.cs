@@ -9,6 +9,8 @@ public class node : MonoBehaviour
     public Transform laserEmitterMuzzle;
     public float laserRange = 10;
 
+    public float turnSpeed = 20f; 
+
     bool isLaserActive = false;
 
     public bool IsLaserActive {
@@ -86,6 +88,19 @@ public class node : MonoBehaviour
             laserLineRenderer.SetPositions(positions);
             edgeCollider.SetPoints(new List<Vector2>(Positions2d));
         }
+    }
+
+    /// <summary>
+    /// OnMouseDown is called when the user has pressed the mouse button while
+    /// over the GUIElement or Collider.
+    /// </summary>
+    void OnMouseDown()
+    {
+        GameManager.Instance.SetSelectedNode(this);
+    }
+
+    public void Turn(int direction){
+        transform.rotation = Quaternion.Euler(0,0,transform.rotation.eulerAngles.z + turnSpeed*direction*Time.deltaTime);
     }
 }
 
