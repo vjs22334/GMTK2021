@@ -6,10 +6,11 @@ using UnityEngine;
 public class node : MonoBehaviour
 {
     public NodeType nodeType;
+    public MoveType moveType;
     public Transform laserEmitterMuzzle;
     public float laserRange = 10;
 
-    public float turnSpeed = 20f; 
+    float turnSpeed; 
 
     bool isLaserActive = false;
 
@@ -39,6 +40,7 @@ public class node : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        turnSpeed = GameManager.Instance.turretTurnSpeed;
         laserLineRenderer = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
@@ -51,23 +53,37 @@ public class node : MonoBehaviour
     {
         if(IsLaserActive){
             //raycast from muzzle
-            Debug.DrawRay(laserEmitterMuzzle.position,laserEmitterMuzzle.right*laserRange,Color.green);
+            Debug.DrawRay(laserEmitterMuzzle.position,laserEmitterMuzzle.right*laserRange,Color.yellow);
             RaycastHit2D[] raycastHits = Physics2D.RaycastAll(laserEmitterMuzzle.position,laserEmitterMuzzle.right,laserRange);
             int i;
+            bool hitnode = false;
             for (i = 0; i < raycastHits.Length; i++)
             {
                 if(raycastHits[i].collider == circleCollider || raycastHits[i].collider.GetType() == typeof(EdgeCollider2D)){
                     continue;
                 }
                 if(raycastHits[i].collider.CompareTag("Node")){
-                    nodeHit = raycastHits[i].collider.GetComponent<node>();
-                    ConnectLaser();
+                    if(nodeHit == null && GameManager.Instance.increaseLaserCount()){
+                        nodeHit = raycastHits[i].collider.GetComponent<node>();
+                        ConnectLaser();
+                    }
+                    hitnode = true;
                     break;
+                   
                 }
             }
-            if(i==raycastHits.Length && nodeHit != null){
-                nodeHit.IsLaserActive = false;
+            if(!hitnode && nodeHit != null){
+                node currNodeHit = nodeHit;
+                node prevNodeHit = nodeHit;
+                while(currNodeHit!=null){
+                    currNodeHit.IsLaserActive = false;
+                    GameManager.Instance.decreaseLaserCount();
+                    currNodeHit = currNodeHit.nodeHit;
+                    prevNodeHit.nodeHit = null;
+                    prevNodeHit = currNodeHit;
+                }
                 nodeHit = null;
+                GameManager.Instance.decreaseLaserCount();
             }
             
         }
@@ -84,7 +100,7 @@ public class node : MonoBehaviour
             laserLineRenderer.enabled = true;
             edgeCollider.enabled = true;
             Vector3[] positions = {transform.position,nodeHit.transform.position};
-            Vector2[] Positions2d = {transform.position,nodeHit.transform.position};
+            Vector2[] Positions2d = {Vector3.zero,transform.worldToLocalMatrix*(nodeHit.transform.position-transform.position)};
             laserLineRenderer.SetPositions(positions);
             edgeCollider.SetPoints(new List<Vector2>(Positions2d));
         }
@@ -100,6 +116,9 @@ public class node : MonoBehaviour
     }
 
     public void Turn(int direction){
+        if(moveType == MoveType.Static){
+            return;
+        }
         transform.rotation = Quaternion.Euler(0,0,transform.rotation.eulerAngles.z + turnSpeed*direction*Time.deltaTime);
     }
 }
@@ -108,4 +127,11 @@ public enum NodeType{
     Source,
     repeater
 }
+
+public enum MoveType{
+    NonStatic,
+    Static
+}
+
+
 
