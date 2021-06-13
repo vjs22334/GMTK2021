@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class node : MonoBehaviour
 {
+    public GameObject selectionCircle;
     public NodeType nodeType;
     public MoveType moveType;
     public Transform laserEmitterMuzzle;
@@ -48,6 +49,7 @@ public class node : MonoBehaviour
     node nodeHit;
 
     LineRenderer laserLineRenderer;
+    LineRenderer muzzleLineRenderer;
     EdgeCollider2D edgeCollider;
 
     CircleCollider2D circleCollider;
@@ -61,6 +63,16 @@ public class node : MonoBehaviour
         laserLineRenderer = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();
+        muzzleLineRenderer = laserEmitterMuzzle.GetComponent<LineRenderer>();
+    }
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        muzzleLineRenderer.SetPosition(1,new Vector3(laserRange,0,0));
     }
 
     /// <summary>

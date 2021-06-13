@@ -3085,12 +3085,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelIndex: 1
   levelData: {fileID: 11400000, guid: 8d3abde6b355d7e4b8e982efcffa55b6, type: 2}
-  maxLasersAllowed: 6
+  maxLasersAllowed: 5
   NodeTurnSpeed: 100
   enemySpeed: 1
   minSpawnTime: 3
   maxSpawnTime: 10
-  spawnCount: 2
+  spawnCount: 3
   spawners:
   - {fileID: 384575070566613559}
   - {fileID: 1468669430}
