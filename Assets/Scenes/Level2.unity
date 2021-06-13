@@ -2353,7 +2353,7 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 8d3abde6b355d7e4b8e982efcffa55b6, type: 2}
   maxLasersAllowed: 3
   NodeTurnSpeed: 100
-  enemySpeed: 1
+  enemySpeed: 1.5
   minSpawnTime: 3
   maxSpawnTime: 10
   spawnCount: 2

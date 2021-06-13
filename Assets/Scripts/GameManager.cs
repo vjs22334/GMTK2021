@@ -35,8 +35,6 @@ public class GameManager : MonoBehaviour
 
     int score;
 
-    bool gameOver = false;
-
     public int Score{
         get{
             return score;
@@ -148,7 +146,11 @@ public class GameManager : MonoBehaviour
 
 
     public void SetSelectedNode(node newNode){
+        if(selectedNode!=null){
+            selectedNode.selectionCircle.SetActive(false);
+        }
         selectedNode = newNode;
+        selectedNode.selectionCircle.SetActive(true);
     }
 
     public void decreaseLaserCount(){
