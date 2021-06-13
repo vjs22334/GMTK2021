@@ -45,5 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectsToSpawn:
   - {fileID: 146750681621990606, guid: 64cd1143a67b83a4a9f77118fc2dba16, type: 3}
+  - {fileID: 7258849876159412412, guid: b73b0e0c368362a438cff30e0b2e52fe, type: 3}
   spawnRate: 5
   InitailDelay: 5

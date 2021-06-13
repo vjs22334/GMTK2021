@@ -13,6 +13,7 @@ public class enemy : MonoBehaviour
     void OnEnable()
     {
         speed = GameManager.Instance.enemySpeed;
+        Destroy(gameObject,30f);
     }
 
     /// <summary>
@@ -27,16 +28,13 @@ public class enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Node")){
+            GameManager.Instance.IncreaseVirusScore();
             Destroy(gameObject);
         }
         else if(other.CompareTag("Core")){
+            GameManager.Instance.DecreaseVirustLives();
             Destroy(gameObject);
         }
     }
     
-}
-
-public enum EnemyType{
-    Blue,
-    Red,
 }

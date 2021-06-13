@@ -9,25 +9,25 @@ public class Spawner : MonoBehaviour
 
     public float InitailDelay = 5f;
 
-   /// <summary>
-   /// This function is called when the object becomes enabled and active.
-   /// </summary>
-   void OnEnable()
-   {
+//    /// <summary>
+//    /// This function is called when the object becomes enabled and active.
+//    /// </summary>
+//    void OnEnable()
+//    {
 
-       InvokeRepeating(nameof(SpawnRandomObject),InitailDelay,spawnRate);
+//        InvokeRepeating(nameof(SpawnRandomObject),InitailDelay,spawnRate);
        
-   }
+//    }
 
-   /// <summary>
-   /// This function is called when the behaviour becomes disabled or inactive.
-   /// </summary>
-   void OnDisable()
-   {
-       CancelInvoke(nameof(SpawnRandomObject));
-   }
+//    /// <summary>
+//    /// This function is called when the behaviour becomes disabled or inactive.
+//    /// </summary>
+//    void OnDisable()
+//    {
+//        CancelInvoke(nameof(SpawnRandomObject));
+//    }
 
-   void SpawnRandomObject(){
+    public void SpawnRandomObject(){
        int i = Random.Range(0,objectsToSpawn.Count*50);
        int index = i/50;
        Instantiate(objectsToSpawn[index],transform.position,transform.rotation);
