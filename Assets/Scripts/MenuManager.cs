@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     public GameObject LevelSelectPanel;
     public Transform LevelButtonParent;
     public GameObject HelpPanel;
+    public GameObject CreditPanel;
 
     GameObject currentOpenPanel;
 
@@ -49,6 +50,10 @@ public class MenuManager : MonoBehaviour
     public void HelpBtn(){
         HelpPanel.SetActive(true);
         currentOpenPanel = HelpPanel;
+    }
+    public void CreditBtn(){
+        CreditPanel.SetActive(true);
+        currentOpenPanel = CreditPanel;
     }
     public void quitbutton(){
         Application.Quit();
