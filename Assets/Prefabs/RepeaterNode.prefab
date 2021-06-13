@@ -217,6 +217,7 @@ MonoBehaviour:
   moveType: 0
   laserEmitterMuzzle: {fileID: 2844566119192792770}
   laserRange: 3
+  audioManager: {fileID: 5832229597147910027, guid: d0a483da3f1161940b6d661cfa6fe13a, type: 3}
 --- !u!120 &2844566119250364422
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class node : MonoBehaviour
             isLaserActive = value;
         }
     }
+    public AudioManager audioManager;
 
     node nodeHit;
 
@@ -102,7 +103,7 @@ public class node : MonoBehaviour
             Vector3[] positions = {transform.position,nodeHit.transform.position};
             Vector2[] Positions2d = {Vector3.zero,transform.worldToLocalMatrix*(nodeHit.transform.position-transform.position)};
             laserLineRenderer.SetPositions(positions);
-            
+            audioManager.Play_laserActiv();
             edgeCollider.SetPoints(new List<Vector2>(Positions2d));
         }
     }

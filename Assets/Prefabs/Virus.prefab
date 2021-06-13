@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509ed9cb1a0680646b629fce7e378df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  virusDeathVFX: {fileID: 9030746771935179938, guid: dfa740c433d058f4a9da45d57604a14a, type: 3}
 --- !u!58 &3376754775664887378
 CircleCollider2D:
   m_ObjectHideFlags: 0
