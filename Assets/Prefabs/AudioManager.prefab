@@ -25,7 +25,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5832229597147910025}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.0551498, y: -1.2994612, z: -1.9538853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -45,9 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 4925264391169506887}
-  packageDeath: {fileID: 8300000, guid: 0aa62e49694217b4289a6dfae8623c41, type: 3}
-  coreDmg: {fileID: 8300000, guid: 0aa62e49694217b4289a6dfae8623c41, type: 3}
-  virusDeath: {fileID: 8300000, guid: 1fdfb0ab06673d44280bfc4c7cdf0198, type: 3}
+  packageDeath: {fileID: 8300000, guid: 6c37cc12c86149040b9c613a84f41e7e, type: 3}
+  coreDmg: {fileID: 8300000, guid: 9b378bb425412db49bee923de590f2ad, type: 3}
+  virusDeath: {fileID: 8300000, guid: 9b378bb425412db49bee923de590f2ad, type: 3}
   scoreUP: {fileID: 8300000, guid: f77f3fc34b7192d49a43236ec13ed700, type: 3}
   laserActiv: {fileID: 8300000, guid: 193d7483ba5f29c4db8ac20968ed6f10, type: 3}
 --- !u!82 &4925264391169506887
@@ -61,7 +61,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

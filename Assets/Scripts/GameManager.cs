@@ -53,9 +53,6 @@ public class GameManager : MonoBehaviour
 
     int virusLives;
     int dataPacketLives;
-
-    [Header("Audio")]
-    public AudioManager audioManager;
   
 
     public int VirusLives{
@@ -171,12 +168,12 @@ public class GameManager : MonoBehaviour
     public void IncreaseVirusScore(){
         Score += scorePerVirus;
        
-        audioManager.Play_virusDeath();
+        AudioManager.Instance.Play_virusDeath();
     }
 
     public void IncreaseDatapacketScore(){
         Score += scorePerDataPacket;
-        audioManager.Play_scoreUP();
+        AudioManager.Instance.Play_scoreUP();
         if(Score > CurrLevel.ScoreToUnlock){
             Time.timeScale = 0;
             levelData.CheckAndSetHighScore(LevelIndex,score);
@@ -189,7 +186,7 @@ public class GameManager : MonoBehaviour
 
     public void DecreaseDatapacketLives(){
         DataPacketLives--;
-        audioManager.Play_packageDeath();
+        AudioManager.Instance.Play_packageDeath();
         if(DataPacketLives <= 0){
             GameOver();
         }
@@ -197,7 +194,7 @@ public class GameManager : MonoBehaviour
     public void DecreaseVirustLives(){
         VirusLives--;
         
-        audioManager.Play_coreDmg();
+        AudioManager.Instance.Play_coreDmg();
         if(VirusLives <= 0){
             GameOver();
         }
