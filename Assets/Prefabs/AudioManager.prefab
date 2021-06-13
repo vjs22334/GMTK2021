@@ -51,7 +51,7 @@ MonoBehaviour:
   coreDmg: {fileID: 8300000, guid: 9b378bb425412db49bee923de590f2ad, type: 3}
   virusDeath: {fileID: 8300000, guid: 9b378bb425412db49bee923de590f2ad, type: 3}
   scoreUP: {fileID: 8300000, guid: f77f3fc34b7192d49a43236ec13ed700, type: 3}
-  laserActiv: {fileID: 8300000, guid: 193d7483ba5f29c4db8ac20968ed6f10, type: 3}
+  laserActiv: {fileID: 8300000, guid: 1f4722aff95e946408611758a49f9875, type: 3}
   bgMusic: {fileID: 8300000, guid: 1b868d16c5e05974584812deff0b27dc, type: 3}
 --- !u!82 &4925264391169506887
 AudioSource:

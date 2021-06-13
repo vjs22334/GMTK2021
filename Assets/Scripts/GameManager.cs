@@ -51,7 +51,8 @@ public class GameManager : MonoBehaviour
 
     int virusLives;
     int dataPacketLives;
-  
+    
+    bool levelPassed = false;
 
     public int VirusLives{
         get{
@@ -171,20 +172,29 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseVirusScore(){
         Score += scorePerVirus;
-       
-        AudioManager.Instance.Play_virusDeath();
-    }
-
-    public void IncreaseDatapacketScore(){
-        Score += scorePerDataPacket;
-        AudioManager.Instance.Play_scoreUP();
-        if(Score > CurrLevel.ScoreToUnlock){
+        if(Score > CurrLevel.ScoreToUnlock && !levelPassed){
             Time.timeScale = 0;
             levelData.CheckAndSetHighScore(LevelIndex,score);
             if(LevelIndex < levelData.levels.Length-1)
                 UIManager.Instance.DisplayLevelCompleted(false);
             else
                 UIManager.Instance.DisplayLevelCompleted(true);
+            levelPassed = true;
+        }
+        AudioManager.Instance.Play_virusDeath();
+    }
+
+    public void IncreaseDatapacketScore(){
+        Score += scorePerDataPacket;
+        AudioManager.Instance.Play_scoreUP();
+        if(Score > CurrLevel.ScoreToUnlock && !levelPassed){
+            Time.timeScale = 0;
+            levelData.CheckAndSetHighScore(LevelIndex,score);
+            if(LevelIndex < levelData.levels.Length-1)
+                UIManager.Instance.DisplayLevelCompleted(false);
+            else
+                UIManager.Instance.DisplayLevelCompleted(true);
+            levelPassed = true;
         }
     }
 
@@ -216,6 +226,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void NextLevel(){
+        levelData.CheckAndSetHighScore(LevelIndex,Score);
         if(LevelIndex<levelData.levels.Length-1){
             SceneManager.LoadScene(levelData.levels[LevelIndex+1].SceneName);
         }
@@ -231,6 +242,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void mainMenu(){
+        levelData.CheckAndSetHighScore(LevelIndex,Score);
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -826,6 +826,30 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2179153438147758917, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1064397804}
+    - target: {fileID: 2179153438147758917, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179153439171211721, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1064397804}
+    - target: {fileID: 2179153439171211721, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: mainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2179153439676910690, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1064397804}
+    - target: {fileID: 2179153439676910690, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextLevel
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e14150a35dea0744ea41508bf7aec376, type: 3}
 --- !u!114 &425649876 stripped
@@ -1566,6 +1590,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4837683805613917864, guid: be0b68ddd5c90fc46b6314e0cadcdee3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1064397804}
+    - target: {fileID: 4837683805613917864, guid: be0b68ddd5c90fc46b6314e0cadcdee3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: mainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4837683806183232377, guid: be0b68ddd5c90fc46b6314e0cadcdee3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1064397804}
+    - target: {fileID: 4837683806183232377, guid: be0b68ddd5c90fc46b6314e0cadcdee3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: retry
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be0b68ddd5c90fc46b6314e0cadcdee3, type: 3}
 --- !u!1 &822461073 stripped
@@ -1976,13 +2016,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb61e38db1b5d154fa7709abbdb1e72c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelIndex: 1
+  LevelIndex: 2
   levelData: {fileID: 11400000, guid: 8d3abde6b355d7e4b8e982efcffa55b6, type: 2}
   maxLasersAllowed: 5
   NodeTurnSpeed: 100
   enemySpeed: 1
-  minSpawnTime: 3
-  maxSpawnTime: 10
+  minSpawnTime: 5
+  maxSpawnTime: 15
   spawnCount: 3
   spawners:
   - {fileID: 384575070566613559}
