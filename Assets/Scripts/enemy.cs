@@ -6,6 +6,8 @@ public class enemy : MonoBehaviour
 {
 
     float speed;
+    public GameObject virusDeathVFX;
+  
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -29,6 +31,8 @@ public class enemy : MonoBehaviour
     {
         if(other.CompareTag("Node")){
             GameManager.Instance.IncreaseVirusScore();
+            GameObject vfx= Instantiate(virusDeathVFX,transform.position,Quaternion.identity) as GameObject ;
+            Destroy(vfx,2f);
             Destroy(gameObject);
         }
         else if(other.CompareTag("Core")){
