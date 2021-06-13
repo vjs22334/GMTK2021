@@ -50,5 +50,8 @@ public class MenuManager : MonoBehaviour
         HelpPanel.SetActive(true);
         currentOpenPanel = HelpPanel;
     }
+    public void quitbutton(){
+        Application.Quit();
+    }
 
 }
