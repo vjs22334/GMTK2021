@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class DataPacket : MonoBehaviour
 {
-
-    float speed;
+     float speed;
 
     /// <summary>
     /// This function is called when the object becomes enabled and active.
@@ -28,13 +27,12 @@ public class enemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Node")){
-            GameManager.Instance.IncreaseVirusScore();
+            GameManager.Instance.DecreaseDatapacketLives();
             Destroy(gameObject);
         }
         else if(other.CompareTag("Core")){
-            GameManager.Instance.DecreaseVirustLives();
+            GameManager.Instance.IncreaseDatapacketScore();
             Destroy(gameObject);
         }
     }
-    
 }
