@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: laser
+    uniqueID: 133640269
+    locked: 0

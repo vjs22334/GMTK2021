@@ -102,6 +102,9 @@ public class node : MonoBehaviour
             Vector3[] positions = {transform.position,nodeHit.transform.position};
             Vector2[] Positions2d = {Vector3.zero,transform.worldToLocalMatrix*(nodeHit.transform.position-transform.position)};
             laserLineRenderer.SetPositions(positions);
+            laserLineRenderer.material= new Material(Shader.Find("Unlit/Texture"));
+            laserLineRenderer.startColor=Color.red;
+            laserLineRenderer.endColor=Color.red;
             edgeCollider.SetPoints(new List<Vector2>(Positions2d));
         }
     }
