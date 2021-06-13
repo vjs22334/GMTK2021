@@ -72,7 +72,9 @@ public class node : MonoBehaviour
     /// </summary>
     void Start()
     {
-        muzzleLineRenderer.SetPosition(1,new Vector3(laserRange,0,0));
+        muzzleLineRenderer.useWorldSpace = true;
+        Vector3[] points = { laserEmitterMuzzle.position,laserEmitterMuzzle.position + laserEmitterMuzzle.right.normalized*laserRange};
+        muzzleLineRenderer.SetPositions(points);
     }
 
     /// <summary>
@@ -80,6 +82,8 @@ public class node : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Vector3[] points = { laserEmitterMuzzle.position,laserEmitterMuzzle.position + laserEmitterMuzzle.right.normalized*laserRange};
+        muzzleLineRenderer.SetPositions(points);
         if(LaserHitCount > 0){
             //raycast from muzzle
             Debug.DrawRay(laserEmitterMuzzle.position,laserEmitterMuzzle.right*laserRange,Color.yellow);
