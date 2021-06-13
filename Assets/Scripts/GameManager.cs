@@ -103,7 +103,8 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        currSpawnTime = Random.Range(minSpawnTime,maxSpawnTime);
+        Time.timeScale = 1;
+        currSpawnTime = 2;
         VirusLives = maxVirusLives;
         DataPacketLives = maxDataPacketLives;
         Score = 0;
@@ -155,14 +156,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool increaseLaserCount(){
-        if(currNoOflasers < maxLasersAllowed){
-            currNoOflasers++;
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void increaseLaserCount(){
+        currNoOflasers++;
+    }
+
+    public bool CanAddLaser(){
+        return currNoOflasers<maxLasersAllowed;
     }
 
     public void IncreaseVirusScore(){
@@ -173,6 +172,7 @@ public class GameManager : MonoBehaviour
         Score += scorePerDataPacket;
         if(Score > CurrLevel.ScoreToUnlock){
             Time.timeScale = 0;
+            levelData.CheckAndSetHighScore(LevelIndex,score);
             if(LevelIndex < levelData.levels.Length-1)
                 UIManager.Instance.DisplayLevelCompleted(false);
             else
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void Continue(){
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         UIManager.Instance.resume();
     }
 

@@ -18,23 +18,18 @@ MonoBehaviour:
     endlessAllowed: 0
     highScore: 0
     Unlocked: 1
-  - ScoreToUnlock: 5
-    SceneName: Level1
+  - ScoreToUnlock: 20
+    SceneName: Level2
     endlessAllowed: 0
     highScore: 0
     Unlocked: 0
-  - ScoreToUnlock: 5
-    SceneName: Level1
+  - ScoreToUnlock: 20
+    SceneName: Level3
     endlessAllowed: 0
     highScore: 0
     Unlocked: 0
-  - ScoreToUnlock: 5
-    SceneName: Level1
-    endlessAllowed: 0
-    highScore: 0
-    Unlocked: 0
-  - ScoreToUnlock: 5
-    SceneName: Level1
+  - ScoreToUnlock: 25
+    SceneName: Level4
     endlessAllowed: 0
     highScore: 0
     Unlocked: 0

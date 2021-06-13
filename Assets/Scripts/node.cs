@@ -14,6 +14,22 @@ public class node : MonoBehaviour
 
     bool isLaserActive = false;
 
+    int laserHitcount = 0;
+
+    public int LaserHitCount{
+        get{
+            if(nodeType == NodeType.Source){
+                return 1;
+            }
+            else{
+                return laserHitcount;
+            }
+        }
+        set{
+            laserHitcount = value;
+        }
+    }
+
     public bool IsLaserActive {
         get{
             if(nodeType == NodeType.Source){
@@ -51,7 +67,7 @@ public class node : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if(IsLaserActive){
+        if(LaserHitCount > 0){
             //raycast from muzzle
             Debug.DrawRay(laserEmitterMuzzle.position,laserEmitterMuzzle.right*laserRange,Color.yellow);
             RaycastHit2D[] raycastHits = Physics2D.RaycastAll(laserEmitterMuzzle.position,laserEmitterMuzzle.right,laserRange);
@@ -63,20 +79,24 @@ public class node : MonoBehaviour
                     continue;
                 }
                 if(raycastHits[i].collider.CompareTag("Node")){
-                    if(nodeHit == null && GameManager.Instance.increaseLaserCount()){
+                    if(nodeHit == null && GameManager.Instance.CanAddLaser()){
                         nodeHit = raycastHits[i].collider.GetComponent<node>();
-                        ConnectLaser();
+                        if(nodeHit.nodeHit == this || nodeHit.LaserHitCount>0){
+                            nodeHit = null;
+                        }
+                        else{
+                            ConnectLaser();
+                        }
                     }
                     hitnode = true;
                     break;
-                   
                 }
             }
             if(!hitnode && nodeHit != null){
                 node currNodeHit = nodeHit;
                 node prevNodeHit = nodeHit;
                 while(currNodeHit!=null){
-                    currNodeHit.IsLaserActive = false;
+                    currNodeHit.LaserHitCount--;
                     GameManager.Instance.decreaseLaserCount();
                     currNodeHit = currNodeHit.nodeHit;
                     prevNodeHit.nodeHit = null;
@@ -84,10 +104,12 @@ public class node : MonoBehaviour
                 }
                 nodeHit = null;
                 GameManager.Instance.decreaseLaserCount();
+               
+                
             }
             
         }
-        if(nodeHit == null || !IsLaserActive){
+        if(nodeHit == null || LaserHitCount == 0){
             laserLineRenderer.enabled = false;
             edgeCollider.enabled = false;
         }
@@ -96,7 +118,8 @@ public class node : MonoBehaviour
     private void ConnectLaser()
     {
         if(nodeHit.nodeType == NodeType.repeater){
-            nodeHit.IsLaserActive = true;
+            nodeHit.LaserHitCount++;
+            GameManager.Instance.increaseLaserCount();
             laserLineRenderer.enabled = true;
             edgeCollider.enabled = true;
             Vector3[] positions = {transform.position,nodeHit.transform.position};
@@ -104,6 +127,9 @@ public class node : MonoBehaviour
             laserLineRenderer.SetPositions(positions);
             
             edgeCollider.SetPoints(new List<Vector2>(Positions2d));
+        }
+        else{
+            nodeHit = null;
         }
     }
 

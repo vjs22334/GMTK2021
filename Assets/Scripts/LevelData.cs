@@ -23,9 +23,9 @@ public class LevelData : ScriptableObject
             PlayerPrefs.SetInt("highScore"+levelIndex,highScore);
         }
 
-        if(levels[levelIndex].ScoreToUnlock < highScore){
-            levels[levelIndex].Unlocked = true;
-            PlayerPrefs.SetInt("unlocked"+levelIndex,1);
+        if(levelIndex < levels.Length-1 && levels[levelIndex].ScoreToUnlock < highScore){
+            levels[levelIndex+1].Unlocked = true;
+            PlayerPrefs.SetInt("unlocked"+levelIndex+1,1);
         }
     }
 }

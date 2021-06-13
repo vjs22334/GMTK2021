@@ -288,7 +288,7 @@ MonoBehaviour:
   nodeType: 1
   moveType: 1
   laserEmitterMuzzle: {fileID: 3792406905666688118}
-  laserRange: 4
+  laserRange: 11
 --- !u!120 &3792406905744183986
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -308,7 +308,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 62c921e272d545c44a1d35beb68d857d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -339,8 +339,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.007472992
-        value: 0
+        time: 0.0027885437
+        value: 0.17098999
         inSlope: 0
         outSlope: 0
         tangentMode: 0
