@@ -43,6 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: laser
+  - name: Components
     uniqueID: 133640269
+    locked: 0
+  - name: Packages
+    uniqueID: 3766981753
     locked: 0

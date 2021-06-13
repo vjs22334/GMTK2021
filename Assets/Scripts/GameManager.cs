@@ -172,6 +172,7 @@ public class GameManager : MonoBehaviour
     public void IncreaseDatapacketScore(){
         Score += scorePerDataPacket;
         if(Score > CurrLevel.ScoreToUnlock){
+            Time.timeScale = 0;
             if(LevelIndex < levelData.levels.Length-1)
                 UIManager.Instance.DisplayLevelCompleted(false);
             else

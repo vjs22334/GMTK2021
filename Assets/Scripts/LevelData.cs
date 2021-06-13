@@ -10,7 +10,9 @@ public class LevelData : ScriptableObject
     public void Initialize(){
         for (int i = 0; i < levels.Length; i++)
         {
-            levels[i].Unlocked = PlayerPrefs.GetInt("unlocked"+i,0) == 1;
+            if(!levels[i].Unlocked)
+                levels[i].Unlocked = PlayerPrefs.GetInt("unlocked"+i,0) == 1;
+            
             levels[i].highScore = PlayerPrefs.GetInt("highScore"+i,0);
         }
     }
