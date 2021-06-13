@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
    [SerializeField]AudioSource source;
+   [SerializeField]AudioSource bgAudioSource;
    [SerializeField]AudioClip packageDeath,coreDmg,virusDeath,scoreUP,laserActiv,bgMusic;
 
     private static AudioManager _instance = null;
@@ -32,8 +33,8 @@ public class AudioManager : MonoBehaviour
     /// </summary>
     void Start()
     {
-        source.clip = bgMusic;
-        source.Play();
+        bgAudioSource.clip = bgMusic;
+        bgAudioSource.Play();
     }        
     public void Play_packageDeath()
     {

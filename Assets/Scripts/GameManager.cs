@@ -108,6 +108,8 @@ public class GameManager : MonoBehaviour
         DataPacketLives = maxDataPacketLives;
         Score = 0;
         CurrLevel = levelData.levels[LevelIndex];
+        UIManager.Instance.SetlasersAllowed(maxLasersAllowed);
+        UIManager.Instance.SetScoreToReach(CurrLevel.ScoreToUnlock);
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.

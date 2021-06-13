@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     public Text ScoreText;
     public Text virusLivesText;
     public Text dataPacketLivesText;
+    public Text ScoreToReach;
+    public Text LasersAllowed;
 
     public GameObject GameoverPanel;
 
@@ -44,6 +46,12 @@ public class UIManager : MonoBehaviour
     }
     public void SetDataPacketLives(int lives){
         dataPacketLivesText.text = lives.ToString();
+    }
+    public void SetScoreToReach(int score){
+        ScoreToReach.text = score.ToString();
+    }
+    public void SetlasersAllowed(int Lasers){
+        LasersAllowed.text = Lasers.ToString();
     }
     public void DisplayGameOver(){
         GameoverPanel.SetActive(true);
