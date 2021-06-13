@@ -40,7 +40,7 @@ public class node : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        turnSpeed = GameManager.Instance.turretTurnSpeed;
+        turnSpeed = GameManager.Instance.NodeTurnSpeed;
         laserLineRenderer = GetComponent<LineRenderer>();
         edgeCollider = GetComponent<EdgeCollider2D>();
         circleCollider = GetComponent<CircleCollider2D>();

@@ -11,6 +11,12 @@ public class UIManager : MonoBehaviour
 
     public GameObject GameoverPanel;
 
+    public GameObject PausePanel;
+
+    public GameObject LevelCompletePanel;
+    public GameObject nextLevelBtn;
+    public Text levelCompleteText;
+
     private static UIManager _instance = null;
     public static UIManager Instance{
         get{
@@ -41,5 +47,20 @@ public class UIManager : MonoBehaviour
     }
     public void DisplayGameOver(){
         GameoverPanel.SetActive(true);
-    }        
+    }
+    public void DisplayPause(){
+        PausePanel.SetActive(true);
+    }
+
+    public void resume(){
+        PausePanel.SetActive(false);
+        LevelCompletePanel.SetActive(false);
+    }         
+    public void DisplayLevelCompleted(bool lastLevel){
+        LevelCompletePanel.SetActive(true);
+        if(lastLevel){
+            levelCompleteText.text = "You have completed the last level. Thanks for playing!";
+            nextLevelBtn.SetActive(false);
+        }
+    } 
 }

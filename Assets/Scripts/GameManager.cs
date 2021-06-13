@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("turret data")]
+    [Header("Level Data")]
+    public int LevelIndex;
+    public LevelData levelData;
+
+    Level CurrLevel;
+
+    [Header("node data")]
     public int maxLasersAllowed = 3;
 
-    public float turretTurnSpeed = 100;
+    public float NodeTurnSpeed = 100;
 
     [Header("enemy and spawner data")]
     public float enemySpeed = 2f;
@@ -27,6 +34,8 @@ public class GameManager : MonoBehaviour
     public int scorePerDataPacket = 1;
 
     int score;
+
+    bool gameOver = false;
 
     public int Score{
         get{
@@ -98,6 +107,7 @@ public class GameManager : MonoBehaviour
         VirusLives = maxVirusLives;
         DataPacketLives = maxDataPacketLives;
         Score = 0;
+        CurrLevel = levelData.levels[LevelIndex];
     }
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
@@ -161,6 +171,12 @@ public class GameManager : MonoBehaviour
 
     public void IncreaseDatapacketScore(){
         Score += scorePerDataPacket;
+        if(Score > CurrLevel.ScoreToUnlock){
+            if(LevelIndex < levelData.levels.Length-1)
+                UIManager.Instance.DisplayLevelCompleted(false);
+            else
+                UIManager.Instance.DisplayLevelCompleted(true);
+        }
     }
 
     public void DecreaseDatapacketLives(){
@@ -180,5 +196,29 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         UIManager.Instance.DisplayGameOver();
+    }
+
+    public void pause(){
+        Time.timeScale = 0;
+        UIManager.Instance.DisplayPause();
+    }
+
+    public void NextLevel(){
+        if(LevelIndex<levelData.levels.Length-1){
+            SceneManager.LoadScene(levelData.levels[LevelIndex+1].SceneName);
+        }
+    }
+
+    public void retry(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Continue(){
+        Time.timeScale = 0;
+        UIManager.Instance.resume();
+    }
+
+    public void mainMenu(){
+        SceneManager.LoadScene("MainMenu");
     }
 }
